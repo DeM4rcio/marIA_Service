@@ -1,3 +1,4 @@
+using app.Services;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 
@@ -33,7 +34,7 @@ public class AuthController: ControllerBase
             return Ok(new{Token = token});
         }
 
-        return Unauthorized;
+        return Unauthorized();
 
     }
 }
