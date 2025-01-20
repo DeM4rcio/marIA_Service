@@ -1,3 +1,4 @@
+using app.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
@@ -10,6 +11,7 @@ namespace Models
         }
  
         public DbSet<User> Users { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
     }
 }
