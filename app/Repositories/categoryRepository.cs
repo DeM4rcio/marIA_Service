@@ -34,9 +34,10 @@ public class CategoryRepository
         _dbcontext.Categories.Remove(category);
     }
 
-    public void Add(Category category)
+    public void AddCategory(Category category)
     {
-        _dbcontext.Add(category);
+        _dbcontext.Categories.Add(category);
+        _dbcontext.SaveChangesAsync();
     }
-    
+ 
 }

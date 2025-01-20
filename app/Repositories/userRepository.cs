@@ -16,7 +16,6 @@ public class UserRepository
 
     public Models.User? AuthenticateAsync(string username, string password)
     {
-        // Verifica se há um usuário com o nome e senha fornecidos
         var user =  _dbContext.Users
             .FirstOrDefaultAsync(u => u.Email == username && u.Password == password);
 
