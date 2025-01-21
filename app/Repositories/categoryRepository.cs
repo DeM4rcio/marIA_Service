@@ -32,6 +32,7 @@ public class CategoryRepository
     {
         var category= await GetByName(name) ?? throw new Exception("Not Found");
         _dbcontext.Categories.Remove(category);
+        _dbcontext.SaveChangesAsync();
     }
 
     public void AddCategory(Category category)
