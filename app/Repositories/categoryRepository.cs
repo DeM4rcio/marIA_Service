@@ -39,5 +39,8 @@ public class CategoryRepository
         _dbcontext.Categories.Add(category);
         _dbcontext.SaveChangesAsync();
     }
- 
+    public async Task<List<string>> ListCategory()
+    {
+        return await _dbcontext.Categories.Select(e => e.Name).ToListAsync();
+    }
 }

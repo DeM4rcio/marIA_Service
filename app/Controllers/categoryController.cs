@@ -26,4 +26,9 @@ public class CategoryController:ControllerBase
     {
         await _repository.DeleteCategory(category.Name);
     }
+    [HttpGet("/list/category")]
+    public async Task<List<string>> ListCategory()
+    {
+        return await _repository.ListCategory();
+    }
 }
