@@ -5,7 +5,7 @@ using Models;
 namespace app.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/category")]
 public class CategoryController:ControllerBase
 {
     public readonly AppDbContext _dbcontext;
@@ -15,15 +15,15 @@ public class CategoryController:ControllerBase
         _repository = repository;
         _dbcontext = context;
     }
-    [HttpPost("add/category")]
+    [HttpPost()]
     public void addCategory([FromBody] Category category)     
     {
        _repository.AddCategory(category);
            
     }    
-    [HttpDelete("delete/repository")]
-    public async Task DeleteCategory([FromBody] Category category)
+    [HttpDelete("{name}")]
+    public async Task DeleteCategory(string name)
     {
-        await _repository.DeleteCategory(category.Name);
+        await _repository.DeleteCategory(name);
     }
 }
