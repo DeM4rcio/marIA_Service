@@ -14,5 +14,5 @@ public class Question{
     [ForeignKey("Category")]
     public int categoryId {get;set;}
 
-    public Category category {get;set;}
+   
 }

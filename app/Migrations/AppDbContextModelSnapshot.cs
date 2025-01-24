@@ -57,9 +57,7 @@ namespace app.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("categoryId");
-
-                    b.ToTable("Question");
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("Models.User", b =>
@@ -81,22 +79,6 @@ namespace app.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Models.Question", b =>
-                {
-                    b.HasOne("Models.Category", "category")
-                        .WithMany("Questions")
-                        .HasForeignKey("categoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("category");
-                });
-
-            modelBuilder.Entity("Models.Category", b =>
-                {
-                    b.Navigation("Questions");
                 });
 #pragma warning restore 612, 618
         }

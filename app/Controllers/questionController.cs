@@ -15,9 +15,15 @@ public class QuestionController: ControllerBase
         _repository = repository;
     }
 
-    [HttpPost("add")]
+    [HttpPost]
     public async Task addQuestion([FromBody] Question question)
     {
         await _repository.addQuestion(question);   
+    }
+
+    [HttpGet("list")]
+    public async Task<List<string>> listQuestion()
+    {
+        return await _repository.listQuestion();
     }
 }

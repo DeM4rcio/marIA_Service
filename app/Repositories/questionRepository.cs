@@ -1,3 +1,4 @@
+using app.Migrations;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,7 @@ public class QuestionRepository{
 
     public async Task addQuestion (Question question)
     {
-        var category = await _context.Categories.FindAsync(question.categoryId);
+        var category = await _context.Categories.FindAsync(question.Id);
 
         if (category == null)
         {
@@ -38,7 +39,7 @@ public class QuestionRepository{
     public async Task GetQuestionById(int id)
     {
         var question = await _context.Questions
-            .Include(q => q.category) // Carregar a categoria associada
+            .Include(q => q.categoryId) // Carregar a categoria associada
             .FirstOrDefaultAsync(q => q.Id == id);
 
         if (question == null)
@@ -47,5 +48,11 @@ public class QuestionRepository{
         }
 
        
+    }
+
+    [HttpGet]
+    public async Task<List<string>> listQuestion(int? pagesize = 0)
+    {
+        return await _context.Questions.Select(e => e.Text).ToListAsync();
     }
 }
