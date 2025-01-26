@@ -13,6 +13,6 @@ public class Question{
 
     [ForeignKey("Category")]
     public int categoryId {get;set;}
-
-   
+    [Required]
+    public string answer {get;set;} 
 }

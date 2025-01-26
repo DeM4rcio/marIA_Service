@@ -25,7 +25,8 @@ public class QuestionRepository{
 
         var questionadd = new Question{
             Text = question.Text,
-            categoryId = question.categoryId
+            categoryId = question.categoryId,
+            answer = question.answer,
         };
 
         _context.Questions.Add(questionadd);
